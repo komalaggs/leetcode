@@ -1,0 +1,15 @@
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        l = len(arr)-1  #lastindex
+        maxi = arr[l]
+        arr[l]=-1   #last element is -1
+        i=l-1
+        while i>=0 :
+            p= arr[i]
+            arr[i] = maxi
+            if arr[i]>p:
+                maxi = arr[i]
+            else:
+                maxi=p
+            i-=1
+        return arr
