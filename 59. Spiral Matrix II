@@ -1,0 +1,38 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int i,j,p=0,q=0,k=1,sum;
+        int[][] a = new int[n][n];
+        if(n%2==0)
+            sum = n;
+        else
+            sum = n-1;
+        while(p+q!= sum)//(p!=n/2 && q!=n/2)
+        {
+            i=p;
+            for(j=q;j<n-q;j++)
+            {
+                a[i][j] = k++;
+            }
+            j--;
+            for(i=p+1; i<n-p;i++)
+            {
+                a[i][j] = k++;
+            }
+            i--;
+            for(j=--j;j>=q;j--)
+            {
+                a[i][j] = k++;
+            }
+            j++;
+            p++;
+            for(i=--i;i>=p;i--)
+            {
+                a[i][j] = k++;
+            }
+            q++;
+        }
+        if(n%2==1)
+        a[p][q] = n*n;
+        return a;
+    }
+}
