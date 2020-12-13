@@ -1,0 +1,20 @@
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+        def splitword(word) -> list:
+            return [char for char in word] 
+        p = []
+        p =splitword(allowed)
+        count=0
+        for i in words:
+            c=0
+            s = splitword(i)
+            for j in s:
+                if(j not in p):
+                    c=0
+                    break
+                c+=1 
+            if c is len(i):
+                count+=1
+            
+            
+        return count
