@@ -1,0 +1,17 @@
+class Solution {
+    public int[] getSumAbsoluteDifferences(int[] nums) {
+        int i,k=0,left_total = 0, right_total = 0;
+        int[] res = new int[nums.length];
+        
+        for(i=0;i<nums.length;i++)
+            right_total += nums[i];
+        
+        for(i=0;i<nums.length;i++)
+        {
+            left_total += nums[i]; 
+            res[k++] = Math.abs(left_total  - (i+1) * nums[i]) + Math.abs((nums.length - i ) * nums[i] - right_total);
+            right_total -= nums[i];
+        }
+        return res;
+    }
+}
