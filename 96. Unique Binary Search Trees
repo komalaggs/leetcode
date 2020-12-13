@@ -1,0 +1,29 @@
+/*
+Catalan numbers form a sequence of natural numbers that occur in various counting problems, often involving recursively defined objects.
+*/
+
+class Solution {
+    public int numTrees(int n) {
+        Map<Integer, Integer> catalan = new HashMap<>(); // to store the previous computations
+        catalan.put(0,1); 
+        catalan.put(1,1);
+        int sum,k=2;
+        
+        // to create the value for each catalan number from 2 to 19....
+        while(k<=19)
+        {
+            sum=0;
+            // calculating the individual value for each catalan number
+            for(int i=1;i<=k;i++)
+            {
+                sum = sum+ catalan.get(i-1) * catalan.get(k-i);
+            }
+            //store the value in the hashmap for each value of k
+            catalan.put(k,sum);
+            k++;
+        }
+        
+        //fetch the required answer from hashmap
+        return catalan.get(n);
+    }
+}
