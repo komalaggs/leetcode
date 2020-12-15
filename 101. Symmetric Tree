@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root==null)
+            return true;
+        return check(root.left, root.right);
+    }
+    
+    private boolean check(TreeNode lefttree, TreeNode righttree)
+    {
+        if(lefttree==null && righttree==null)
+            return true;
+        else if(lefttree!=null && righttree!=null)
+        {
+            return lefttree.val==righttree.val && check(lefttree.left, righttree.right) && check(lefttree.right, righttree.left);
+        }
+        return false;
+    }
+}
